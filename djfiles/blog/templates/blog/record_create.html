@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "New record" %}
+{% endblock %}
+
+
+{% block body %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_rec.as_p }}
+        {{ form_im.as_p }}
+      <button type="submit">{% trans "Create record" %}</button>
+    </form>
+    <ul><a href="record_file_upload">{% trans "Upload CSV" %}</a></ul>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Sign out" %}
+{% endblock %}
+
+
+{% block body %}
+    <h1>{% trans "Sign out" %}</h1>
+    <div>
+        {% trans "You signed out succssesfully" %}
+    </div>
+    <ul><a href="/">{% trans "Main page" %}</a></ul>
+{% endblock %}
+

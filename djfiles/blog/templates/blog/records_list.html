@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% trans "Main page" %}
+{% endblock %}
+
+
+{% block body %}
+ <ul>{% trans "Blog records" %}</ul>
+ {% for record in records_list %}
+    <li><a href="{{ record.id }}">{{ record.title }}</a></li>
+    <ul>{% trans "Author" %}: {{ record.user }}</ul>
+    <ul>{{ record.contents|truncatechars:100 }}</ul>
+ {% endfor %}
+ {% if request.user.is_authenticated %}
+        <ul>{% trans "Welcome" %}, {{ user.username }}</ul>
+        <ul><a href="record_create">{% trans "Create new record" %}</a></ul>
+        <ul><a href="account">{% trans "Account" %}</a></ul>
+        <ul><a href="logout">{% trans "Logout" %}</a></ul>
+ {% else %}
+        <ul>{% trans "You are not authenticated" %}</ul>
+        <ul><a href="login">{% trans "Login" %}</a></ul>
+        <ul><a href="register">{% trans "Sign up" %}</a></ul>
+ {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {{ record.title }}
+{% endblock %}
+
+
+{% block body %}
+    <ul>{% trans "Author" %} - {{ record.user }}</ul>
+    <ul>{% trans "Contents" %}: {{ record.contents }}</ul>
+    {% for im in images %}
+        <img src="media/{{ im.image }}" alt="image">
+    {% endfor %}
+{% endblock %}
+
